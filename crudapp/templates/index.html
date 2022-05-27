@@ -1,0 +1,26 @@
+{% extends 'layout.html' %}
+{% block body %}
+  <h3 class='text-center text-muted mb-3'>Reservationer</h3>
+  <p class='text-right'><a href='{{url_for("add")}}' class='btn btn-success '>+Add</a></p>
+  <table class='table table-bordered'>
+    <thead>
+      <th>ID</th>
+      <th>Gender</th>
+      <th>Item</th>
+      <th>Size</th>
+      <th>Date</th>
+    </thead>
+    <tbody>
+      {% for row in datas %}
+        <tr>
+          <td>{{row.ID}}</td>
+          <td>{{row.Gender}}</td>
+          <td>{{row.Item}}</td>
+          <td>{{row.Size}}</td>
+          <td>{{row.Date}}</td>
+          <td><a href='{{url_for("delete",id=row.ID)}}' class='btn btn-danger' onclick='return confirm("Are You Sure")'>Delete</a></td>
+        </tr>
+      {%endfor%}
+    </tbody>
+  </table>
+{% endblock %}
